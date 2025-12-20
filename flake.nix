@@ -66,7 +66,7 @@
 	hostname = "nixos-server";
       };  # modules/ops/agenix.nix で使う
       modules = [
-        ./hosts/nixos-server/configuration.nix
+        ./hosts/configuration.nix
         home-manager.nixosModules.home-manager
 
         # overlay を有効化 + unfree許可維持
