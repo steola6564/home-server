@@ -6,7 +6,7 @@
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     
     nix-cloudflared.url = "github:steola6564/nix-cloudflared";
-
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     agenix.url = "github:ryantm/agenix";
     flake-utils.url = "github:numtide/flake-utils";
 
