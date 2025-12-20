@@ -13,6 +13,7 @@
     ../modules/services/ssh.nix
     # ../modules/services/nextcloud.nix
     ../modules/services/cloudflared.nix
+    ../modules/services/minecraft.nix
 
     # User
     ../modules/users/steola.nix

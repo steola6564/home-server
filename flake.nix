@@ -50,7 +50,10 @@
         # overlay を有効化 + unfree許可維持
         ({ pkgs, ... }: {
           nixpkgs = {
-            overlays = [ inputs.nix-cloudflared.overlays.default ];
+            overlays = [
+	      inputs.nix-cloudflared.overlays.default
+	      inputs.nix-minecraft.overlay
+	    ];
             config = {
               allowUnfree = true;
               # 元の意図：terraform と cloudflared-bin を許可
