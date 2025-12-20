@@ -5,7 +5,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     agenix.url = "github:ryantm/agenix";
-    nix-darwin.url = "github:lnl7/nix-darwin/nix-darwin-25.05";
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
@@ -29,12 +28,6 @@
         };
       in
       {
-        # Devshells
-        devShells = {
-          # poetry = import ./Devshells/poetry.nix { inherit pkgs; };
-          # uv = import ./Devshells/uv.nix { inherit pkgs; };
-        };
-
         # Apps
         apps = {
           nvfetcher = {
@@ -90,36 +83,6 @@
         })
       ];
     };
-
-
-    nixosConfigurations.nixos-desktop = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = { inherit inputs; };
-      modules = [
-        ./hosts/nixos-desktop/configuration.nix
-        home-manager.nixosModules.home-manager
-      ];
-    };
-
-
-    darwinConfigurations."darwin-air" = inputs.nix-darwin.lib.darwinSystem {
-      system = "aarch64-darwin";
-      specialArgs = {
-        inherit inputs;
-        hostname = "darwin-air";
-      };
-      modules = [
-        ./hosts/darwin-air/configuration.nix
-        home-manager.darwinModules.home-manager
-	({ pkgs, ... }: {
-          nixpkgs.overlays = [
-	    self.overlays.default
-	    vscode-extensions.overlays.default
-	  ];
-	})
-      ];
-    };
-
   };
 }
 
