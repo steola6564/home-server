@@ -15,7 +15,6 @@
     ../modules/ops/agenix.nix
     ../modules/ops/terraform.nix
     ../modules/ui/fonts.nix
-    ../modules/home-manager.nix
   ];
 
   networking.hostName = "nixos-server";
