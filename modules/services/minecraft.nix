@@ -7,7 +7,7 @@
     eula = true;
 
     servers = {
-      vanila-plugin-server = {
+      vanilla-plugin-server = {
         enable = true;
 
 	serverProperties = {};
