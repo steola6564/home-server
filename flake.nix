@@ -1,5 +1,5 @@
 {
-  description = "NixOS/Darwin unified repo (方案A)";
+  description = "Home server NixOS flake for self-hosted services (Nextcloud, Minecraft, etc.)";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
@@ -8,45 +8,21 @@
     nix-cloudflared.url = "github:steola6564/nix-cloudflared";
 
     agenix.url = "github:ryantm/agenix";
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
-    vscode-extensions.inputs.nixpkgs.follows = "nixpkgs";
-    nvfetcher.url = "github:berberman/nvfetcher";
-    nvfetcher.inputs.nixpkgs.follows = "nixpkgs";
     flake-utils.url = "github:numtide/flake-utils";
+
+    home-manager = {
+      url = "github:nix-community/home-manager/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     dotfiles = {
       url = "github:steola6564/dotfiles";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs @ { self, nixpkgs, unstable, home-manager, agenix, dotfiles, vscode-extensions, nvfetcher, flake-utils, ... }:
-  let
-    inherit (nixpkgs.lib) nixosSystem;
-  in
-  (
-
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = import nixpkgs {
-          inherit system;
-	        config.allowUnfree = true;
-        };
-      in
-      {
-        # Apps
-        apps = {
-          nvfetcher = {
-            type = "app";
-            program = "${inputs.nvfetcher.packages.${system}.default}/bin/nvfetcher";
-          };
-        };
-      }
-    )
-  )
-
-  //{   
+  outputs = inputs @ { self, nixpkgs, unstable, home-manager, agenix, dotfiles, nix-cloudflared, flake-utils, ... }:
+  {   
 
     nixosConfigurations.nixos-server = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
