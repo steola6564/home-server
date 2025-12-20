@@ -12,7 +12,7 @@
     ../modules/services/common.nix
     ../modules/services/ssh.nix
     # ../modules/services/nextcloud.nix
-    ../modules/system/cloudflared-service.nix
+    ../modules/services/cloudflared.nix
 
     # User
     ../modules/users/steola.nix
