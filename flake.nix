@@ -4,6 +4,9 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    
+    nix-cloudflared.url = "github:steola6564/nix-cloudflared";
+
     agenix.url = "github:ryantm/agenix";
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -55,9 +58,9 @@
         };
     };
 
-    overlays = {
-        default = import ./overlays/cloudflared.nix;
-    };
+    # overlays = {
+        # default = import ./overlays/cloudflared.nix;
+    # };
 
     nixosConfigurations.nixos-server = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -72,7 +75,7 @@
         # overlay を有効化 + unfree許可維持
         ({ pkgs, ... }: {
           nixpkgs = {
-            overlays = [ self.overlays.default ];
+            overlays = [ inputs.nix-cloudflared.overlays.default ];
             config = {
               allowUnfree = true;
               # 元の意図：terraform と cloudflared-bin を許可
