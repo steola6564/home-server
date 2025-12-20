@@ -1,18 +1,27 @@
 { inputs, lib, pkgs, ... }: {
   imports = [
+
+    # Hardware
     ./hardware-configuration.nix
-    ../modules/services/common.nix
-    ../modules/services/ssh.nix
-    ../modules/pkgs.nix
+
+    # Boot
     ../modules/system/base.nix
     ../modules/system/boot.nix
-    ../modules/system/cloudflared-service.nix
+
+    # Service
+    ../modules/services/common.nix
+    ../modules/services/ssh.nix
     # ../modules/services/nextcloud.nix
+    ../modules/system/cloudflared-service.nix
+
+    # User
     ../modules/users/steola.nix
-    ../modules/users/cloudflared.nix
+    ../modules/cloudflared.nix
+
+    # ops
+    ../modules/pkgs.nix
     ../modules/ops/agenix.nix
     ../modules/ops/terraform.nix
-    ../modules/ui/fonts.nix
   ];
 
   networking.hostName = "nixos-server";
