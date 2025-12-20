@@ -16,7 +16,7 @@
 
     # User
     ../modules/users/steola.nix
-    ../modules/cloudflared.nix
+    ../modules/users/cloudflared.nix
 
     # ops
     ../modules/pkgs.nix
