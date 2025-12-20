@@ -15,9 +15,13 @@
     nvfetcher.url = "github:berberman/nvfetcher";
     nvfetcher.inputs.nixpkgs.follows = "nixpkgs";
     flake-utils.url = "github:numtide/flake-utils";
+    dotfiles = {
+      url = "github:steola6564/dotfiles";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs @ { self, nixpkgs, unstable, home-manager, agenix, vscode-extensions, nvfetcher, flake-utils, ... }:
+  outputs = inputs @ { self, nixpkgs, unstable, home-manager, agenix, dotfiles, vscode-extensions, nvfetcher, flake-utils, ... }:
   let
     inherit (nixpkgs.lib) nixosSystem;
   in
@@ -44,24 +48,6 @@
 
   //{   
 
-    homeManagerModules = {
-      default =
-        { config, lib, pkgs, username, homeDirectory, ... }:
-        {
-          imports = [
-            ./modules/home/home.nix
-          ];
-
-          home.username = username;
-          home.homeDirectory = homeDirectory;
-          home.stateVersion = "25.05";
-        };
-    };
-
-    # overlays = {
-        # default = import ./overlays/cloudflared.nix;
-    # };
-
     nixosConfigurations.nixos-server = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
@@ -71,6 +57,19 @@
       modules = [
         ./hosts/configuration.nix
         home-manager.nixosModules.home-manager
+	{
+	  home-manager.useGlobalPkgs = true;
+	  home-manager.useUserPackages = true;
+	  home-manager.users.steola = {
+	    imports = [
+	      dotfiles.homeManagerModules.default
+	    ];
+	  };
+	  home-manager.extraSpecialArgs = {
+	    username = "steola";
+	    homeDirectory = "/home/steola";
+	  };
+	}
 
         # overlay を有効化 + unfree許可維持
         ({ pkgs, ... }: {
