@@ -1,12 +1,8 @@
 { inputs, lib, pkgs, ... }: {
   imports = [
     ./hardware-configuration.nix
-
-    # OS / profiles
-    ../profiles/server.nix
-    ../profiles/dev.nix
-
-    # 機能モジュール
+    ../modules/services/server.nix
+    ../modules/pkgs/dev.nix
     ../modules/system/base.nix
     ../modules/system/boot.nix
     ../modules/system/cloudflared-service.nix
