@@ -5,13 +5,18 @@
   services.minecraft-servers = {
     enable = true;
     eula = true;
+    openFirewall = true;
 
     servers = {
       vanilla-plugin-server = {
         enable = true;
+        package = pkgs.vanillaServers.vanilla-1_21_1;
 
-	serverProperties = {};
+        serverProperties = {};
 	whitelist = {};
+	serverProperties = {
+          server-port = 25565;
+        };
       };
     };
   };
