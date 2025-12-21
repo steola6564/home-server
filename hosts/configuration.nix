@@ -14,6 +14,7 @@
     # ../modules/services/nextcloud.nix
     ../modules/services/cloudflared.nix
     ../modules/services/minecraft.nix
+    ../modules/networking/tailscale.nix
 
     # User
     ../modules/users/steola.nix
