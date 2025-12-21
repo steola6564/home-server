@@ -12,7 +12,6 @@
         enable = true;
         package = pkgs.paperServers.paper-1_21_1;
 
-        serverProperties = {};
 	whitelist = {};
 	serverProperties = {
 	  # Port
@@ -29,10 +28,11 @@
 
 	  # multi
 	  online-mode = true;
-	  max-players = 10;
+	  max-players = 20;
 
 	  # world
-	  level-name = "test world";
+	  level-name = "niboland";
+	  level-seed = "8112500777490990468";
 	  view-distance = 10;
 	  simulation-distance = 10;
 	  
