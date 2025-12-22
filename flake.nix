@@ -5,9 +5,10 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-25_11.url = "github:NixOS/nixpkgs/nixos-25.11";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    
+
     nix-cloudflared.url = "github:steola6564/nix-cloudflared";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+    headscale.url = "github:juanfont/headscale";
     agenix.url = "github:ryantm/agenix";
     flake-utils.url = "github:numtide/flake-utils";
 
