@@ -19,36 +19,36 @@
 
     settings = {
       # The URL clients will connect to
-      server_url = "https://headscale.example.com";
+      server_url = "http://127.0.0.1:8000";
 
       # IP prefixes for the tailnet
       # These use the freeform settings - you can set any headscale config option
-      prefixes = {
-        v4 = "100.64.0.0/10";
-        v6 = "fd7a:115c:a1e0::/48";
-        allocation = "sequential";
-      };
+      # prefixes = {
+      #   v4 = "100.64.0.0/10";
+      #   v6 = "fd7a:115c:a1e0::/48";
+      #   allocation = "sequential";
+      # };
 
       # DNS configuration with MagicDNS
       dns = {
-        magic_dns = true;
-        base_domain = "tailnet.example.com";
+        magic_dns = false;
+      #   base_domain = "tailnet.example.com";
 
         # Whether to override client's local DNS settings (default: true)
         # When true, nameservers.global must be set
-        override_local_dns = true;
+        override_local_dns = false;
 
-        nameservers = {
-          global = [ "1.1.1.1" "8.8.8.8" ];
-        };
+      #   nameservers = {
+      #     global = [ "1.1.1.1" "8.8.8.8" ];
+      #   };
       };
 
       # DERP (relay) configuration
-      derp = {
+      # derp = {
         # Use default Tailscale DERP servers
-        urls = [ "https://controlplane.tailscale.com/derpmap/default" ];
-        auto_update_enabled = true;
-        update_frequency = "24h";
+      #   urls = [ "https://controlplane.tailscale.com/derpmap/default" ];
+      #   auto_update_enabled = true;
+      #   update_frequency = "24h";
 
         # Optional: Run your own DERP server
         # server = {
@@ -56,7 +56,7 @@
         #   region_id = 999;
         #   stun_listen_addr = "0.0.0.0:3478";
         # };
-      };
+      # };
 
       # Database configuration (SQLite is recommended)
       database = {
@@ -101,10 +101,10 @@
       # tls_key_path = "/path/to/key.pem";
 
       # ACL policy configuration
-      policy = {
-        mode = "file";
-        path = "/var/lib/headscale/policy.hujson";
-      };
+      # policy = {
+      #   mode = "file";
+      #   path = "/var/lib/headscale/policy.hujson";
+      # };
 
       # You can add ANY headscale configuration option here thanks to freeform settings
       # For example, experimental features or settings not explicitly defined above:
