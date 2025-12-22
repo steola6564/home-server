@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-25_11.url = "github:NixOS/nixpkgs/nixos-25.11";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     
     nix-cloudflared.url = "github:steola6564/nix-cloudflared";
@@ -48,9 +49,15 @@
 	}
 
         # overlay を有効化 + unfree許可維持
-        ({ pkgs, ... }: {
+        ({ pkgs, system, inputs, ... }: {
           nixpkgs = {
             overlays = [
+	      (final: prev: {
+	        tailscale = 
+		  inputs.nixpkgs-25_11.legacyPackages.${final.system}.tailscale;
+		headscale =
+		  inputs.nixpkgs-25_11.legacyPackages.${final.system}.headscale;
+	      })
 	      inputs.nix-cloudflared.overlays.default
 	      inputs.nix-minecraft.overlay
 	    ];

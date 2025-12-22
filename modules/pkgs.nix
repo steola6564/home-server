@@ -4,7 +4,7 @@
   environment.systemPackages = with pkgs; [
     vim wget neovim git gh htop tmux curl
     cloudflared-bin terraform #opentofu
-    tailscale
+    tailscale headscale
     home-manager
   ];
 }
