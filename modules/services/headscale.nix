@@ -31,16 +31,16 @@
 
       # DNS configuration with MagicDNS
       dns = {
-        magic_dns = true;
-        base_domain = "tailnet.nibo";
+        magic_dns = false;
+        # base_domain = "tailnet.nibo";
 
         # Whether to override client's local DNS settings (default: true)
         # When true, nameservers.global must be set
-        override_local_dns = true;
+        override_local_dns = false;
 
-        nameservers = {
-          global = [ "1.1.1.1" "8.8.8.8" ];
-        };
+        # nameservers = {
+        #   global = [ "1.1.1.1" "8.8.8.8" ];
+        # };
       };
 
       # DERP (relay) configuration
