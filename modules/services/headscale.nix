@@ -19,7 +19,7 @@
 
     settings = {
       # The URL clients will connect to
-      server_url = "http://127.0.0.1:8000";
+      server_url = "https://headscale.niboratory.com";
 
       # IP prefixes for the tailnet
       # These use the freeform settings - you can set any headscale config option

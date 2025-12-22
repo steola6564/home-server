@@ -12,8 +12,9 @@
       credentialsFile = config.age.secrets."cloudflared/credentials".path;
 
       ingress = {
+	"headscale.niboratory.com" = "http://127.0.0.1:8080";
         "terminal.niboratory.com" = "ssh://localhost:22";
-	"cloud.niboratory.com" = "http://127.0.0.1:8080";
+	# "cloud.niboratory.com" = "http://127.0.0.1:8080";
         # "terminal.niboratory.com" = { service = "http://127.0.0.1:8000"; };
       };
       default = "http_status:404";
