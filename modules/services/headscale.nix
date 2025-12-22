@@ -16,12 +16,12 @@
       ];
 
       # 後で有効化する
-      dns_config = {
+      dns = {
         magic_dns = false;
       };
 
       # ACL は後フェーズ
-      policy = null;
+      policy = {};
     };
   };
 }
