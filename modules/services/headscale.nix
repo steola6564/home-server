@@ -31,16 +31,16 @@
 
       # DNS configuration with MagicDNS
       dns = {
-        magic_dns = false;
-      #   base_domain = "tailnet.example.com";
+        magic_dns = true;
+        base_domain = "tailnet.nibo";
 
         # Whether to override client's local DNS settings (default: true)
         # When true, nameservers.global must be set
-        override_local_dns = false;
+        override_local_dns = true;
 
-      #   nameservers = {
-      #     global = [ "1.1.1.1" "8.8.8.8" ];
-      #   };
+        nameservers = {
+          global = [ "1.1.1.1" "8.8.8.8" ];
+        };
       };
 
       # DERP (relay) configuration
@@ -93,7 +93,7 @@
       # };
 
       # Optional: Let's Encrypt TLS certificates
-      # tls_letsencrypt_hostname = "headscale.example.com";
+      # tls_letsencrypt_hostname = "headscale.niboratory.com";
       # tls_letsencrypt_challenge_type = "HTTP-01";
 
       # Optional: Provide your own TLS certificates
