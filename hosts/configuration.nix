@@ -17,6 +17,7 @@
     ../modules/services/headscale.nix
     ../modules/networking/tailscale.nix
     ../modules/services/proxmox.nix
+    ../modules/networking/bridge.nix
 
     # User
     ../modules/users/steola.nix

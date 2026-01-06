@@ -12,7 +12,7 @@
     openFirewall = true;
 
     # bridge は後で定義（まず起動優先）
-    bridges = [ ];
+    bridges = [ "vmbr0" ];
   };
 
   # Proxmox Web UI
