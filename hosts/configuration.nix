@@ -16,6 +16,7 @@
     ../modules/services/minecraft.nix
     ../modules/services/headscale.nix
     ../modules/networking/tailscale.nix
+    ../modules/services/proxmox.nix
 
     # User
     ../modules/users/steola.nix
