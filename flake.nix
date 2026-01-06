@@ -5,6 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-25_11.url = "github:NixOS/nixpkgs/nixos-25.11";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    proxmox-nixos.url = "github:SaumonNet/proxmox-nixos";
 
     nix-cloudflared.url = "github:steola6564/nix-cloudflared";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
@@ -23,7 +24,7 @@
     };
   };
 
-  outputs = inputs @ { self, nixpkgs, unstable, home-manager, agenix, dotfiles, nix-cloudflared, flake-utils, ... }:
+  outputs = inputs @ { self, nixpkgs, unstable, proxmox-nixos, home-manager, agenix, dotfiles, nix-cloudflared, flake-utils, ... }:
   {   
 
     nixosConfigurations.nixos-server = nixpkgs.lib.nixosSystem {
@@ -34,6 +35,7 @@
       };  # modules/ops/agenix.nix で使う
       modules = [
         ./hosts/configuration.nix
+	proxmox-nixos.nixosModules.proxmox-ve
         home-manager.nixosModules.home-manager
 	{
 	  home-manager.useGlobalPkgs = true;
@@ -53,6 +55,8 @@
         ({ pkgs, system, inputs, ... }: {
           nixpkgs = {
             overlays = [
+	      proxmox-nixos.overlays.x86_64-linux
+
 	      (final: prev: {
 	        tailscale = 
 		  inputs.nixpkgs-25_11.legacyPackages.${final.system}.tailscale;
