@@ -34,7 +34,7 @@
 	hostname = "nixos-server";
       };  # modules/ops/agenix.nix で使う
       modules = [
-        ./hosts/configuration.nix
+        ./hosts/nixos-server/configuration.nix
 	proxmox-nixos.nixosModules.proxmox-ve
         home-manager.nixosModules.home-manager
 	{
