@@ -13,8 +13,8 @@
     ../modules/services/ssh.nix
     # ../modules/services/nextcloud.nix
     ../modules/services/cloudflared.nix
-    ../modules/services/minecraft.nix
-    ../modules/services/headscale.nix
+    # ../modules/services/minecraft.nix
+    # ../modules/services/headscale.nix
     ../modules/networking/tailscale.nix
     ../modules/services/proxmox.nix
     ../modules/networking/bridge.nix
