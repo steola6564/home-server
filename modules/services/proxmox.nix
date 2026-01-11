@@ -6,7 +6,7 @@
 
     # Web UI が bind する IP
     # LAN 内アクセス前提
-    ipAddress = "192.168.0.13";
+    ipAddress = "192.168.1.60";
 
     # 初期は最小構成
     openFirewall = true;
