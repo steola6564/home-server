@@ -9,7 +9,7 @@
       ../../modules/services/ssh.nix
       ../../modules/users/steola.nix
       ../../modules/networking/common.nix
-      ../../modules/pkgs.nix
+      ../../modules/pkgs/common.nix
       ../../modules/home-manager.nix
       ../../modules/services/minecraft.nix
     ];
