@@ -36,20 +36,6 @@
       modules = [
         ./hosts/nixos-server/configuration.nix
 	proxmox-nixos.nixosModules.proxmox-ve
-        home-manager.nixosModules.home-manager
-	{
-	  home-manager.useGlobalPkgs = true;
-	  home-manager.useUserPackages = true;
-	  home-manager.users.steola = {
-	    imports = [
-	      dotfiles.homeManagerModules.default
-	    ];
-	  };
-	  home-manager.extraSpecialArgs = {
-	    username = "steola";
-	    homeDirectory = "/home/steola";
-	  };
-	}
 
         # overlay を有効化 + unfree許可維持
         ({ pkgs, system, inputs, ... }: {
