@@ -25,7 +25,8 @@
     ../../modules/home-manager.nix
 
     # ops
-    ../../modules/pkgs.nix
+    ../../modules/pkgs/common.nix
+    ../../modules/pkgs/infra.nix
     ../../modules/ops/agenix.nix
     ../../modules/ops/terraform.nix
   ];
