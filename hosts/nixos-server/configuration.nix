@@ -22,6 +22,7 @@
     # User
     ../../modules/users/steola.nix
     ../../modules/users/cloudflared.nix
+    ../../modules/home-manager.nix
 
     # ops
     ../../modules/pkgs.nix
