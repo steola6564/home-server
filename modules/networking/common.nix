@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 {
-  networking.networkmanager.enable = false;
+  networking.networkmanager.enable = true;
   # networking.firewall.allowedTCPPorts = [ 25565 ];
 
   # services.headscale.address = "0.0.0.0";
