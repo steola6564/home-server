@@ -82,7 +82,7 @@
         })
       ];
     };
-    nixosConfigurations.minecraft = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.vps = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
       specialArgs = {
@@ -96,7 +96,6 @@
         # Minecraft module が inputs を使うため
         ({ pkgs, ... }: {
           nixpkgs.overlays = [
-            inputs.nix-minecraft.overlay
           ];
         })
       ];
