@@ -82,6 +82,27 @@
         })
       ];
     };
+    nixosConfigurations.minecraft = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+
+      specialArgs = {
+        inherit inputs;
+        hostname = "vps";
+      };
+
+      modules = [
+        ./hosts/vps/configuration.nix
+
+        # Minecraft module が inputs を使うため
+        ({ pkgs, ... }: {
+          nixpkgs.overlays = [
+            inputs.nix-minecraft.overlay
+          ];
+        })
+      ];
+    };
+
+
   };
 }
 
