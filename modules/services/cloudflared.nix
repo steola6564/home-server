@@ -14,7 +14,7 @@
       ingress = {
         "terminal.niboratory.com" = "ssh://localhost:22";
 	"proxmox.niboratory.com" = {
-          service = "https://192.168.1.60:8006";
+          service = "https://192.168.1.13:8006";
           originRequest.noTLSVerify = true;
         };
       };
